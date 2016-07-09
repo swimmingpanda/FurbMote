@@ -44,5 +44,10 @@ namespace FurbMote
             // If you are using the NavigationHelper provided by some templates,
             // this event is handled for you.
         }
+
+        private void PlayBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Common.PlayMedia("ms-appx:///Assets/Sounds/out.wav", LayoutRoot);
+        }
     }
 }

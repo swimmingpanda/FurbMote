@@ -8,10 +8,12 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid x:Name="LayoutRoot">
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button x:Name="PlayBtn" Content="Play" Click="PlayBtn_Click"/>
-
-        </StackPanel>
-    </Grid>
+  <Grid x:Name="LayoutRoot">
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="350">
+      <Button x:Name="OpenArchiveBtn" Content="Open Archive" Click="OpenArchiveBtn_Click" />
+      <ProgressBar x:Name="PBar" Maximum="1" Minimum="0" />
+      <TextBox x:Name="SoundNameBox" />
+      <Button x:Name="PlayBtn" Content="Play" Click="PlayBtn_Click" />
+    </StackPanel>
+  </Grid>
 </Page>

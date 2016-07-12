@@ -1,53 +1,59 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
 
-namespace FurbMote
-{
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
-    public sealed partial class MainPage : Page
-    {
-        public MainPage()
-        {
-            this.InitializeComponent();
+namespace FurbMote {
 
-            this.NavigationCacheMode = NavigationCacheMode.Required;
-        }
+  /// <summary>
+  /// An empty page that can be used on its own or navigated to within a Frame.
+  /// </summary>
+  public sealed partial class MainPage : Page {
 
-        /// <summary>
-        /// Invoked when this page is about to be displayed in a Frame.
-        /// </summary>
-        /// <param name="e">Event data that describes how this page was reached.
-        /// This parameter is typically used to configure the page.</param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            // TODO: Prepare page for display here.
+    public MainPage() {
+      this.InitializeComponent();
 
-            // TODO: If your application contains multiple pages, ensure that you are
-            // handling the hardware Back button by registering for the
-            // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
-            // If you are using the NavigationHelper provided by some templates,
-            // this event is handled for you.
-        }
-
-        private void PlayBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Common.PlayMedia("ms-appx:///Assets/Sounds/out.wav", LayoutRoot);
-        }
+      this.NavigationCacheMode = NavigationCacheMode.Required;
     }
+
+    /// <summary>
+    /// Invoked when this page is about to be displayed in a Frame.
+    /// </summary>
+    /// <param name="e">Event data that describes how this page was reached.
+    /// This parameter is typically used to configure the page.</param>
+    protected override void OnNavigatedTo(NavigationEventArgs e) {
+      // TODO: Prepare page for display here.
+
+      // TODO: If your application contains multiple pages, ensure that you are
+      // handling the hardware Back button by registering for the
+      // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
+      // If you are using the NavigationHelper provided by some templates,
+      // this event is handled for you.
+    }
+
+    private void PlayBtn_Click(object sender, RoutedEventArgs e) {
+      Common.PlayMedia(ApplicationData.Current.LocalFolder.Path + "\\" + SoundNameBox.Text + ".wav", LayoutRoot);
+    }
+
+    private async void OpenArchiveBtn_Click(object sender, RoutedEventArgs e) {
+      StorageFolder rootFolder = Windows.ApplicationModel.Package.Current.InstalledLocation;
+      StorageFolder assetFolder = await rootFolder.GetFolderAsync("Assets");
+      StorageFile file = await assetFolder.GetFileAsync("Sound.zip");
+
+      //Stream stream = await file.OpenStreamForReadAsync();
+
+      StorageFolder local = ApplicationData.Current.LocalFolder;
+
+      var progress = new Progress<float>();
+      progress.ProgressChanged += Progress_ProgressChanged;
+      await Common.ExtractDoubleArchive(file, local, progress, true);
+    }
+
+    private void Progress_ProgressChanged(object sender, float e) {
+      PBar.Value = e;
+    }
+  }
 }

@@ -8,6 +8,7 @@ using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using SharpCompress.Reader;
+using Windows.UI;
 
 namespace FurbMote {
   public class Common {
@@ -87,6 +88,32 @@ namespace FurbMote {
       progress.Report(0.75f);
       if (deleteSecondArchive) await file.DeleteAsync();
       progress.Report(1.0f);
+    }
+
+    public static Color ShiftColor(Color color, byte value, bool isLight) {
+      byte[] bs = { color.R, color.G, color.B };
+
+      for (int i = 0; i < bs.Length; i++)
+        bs[i] = OperateByteValue(bs[i], value, isLight);
+
+      color = Color.FromArgb(255, bs[0], bs[1], bs[2]);
+      return color;
+    }
+
+    public static byte OperateByteValue(byte b1, byte b2, bool isAddition) {
+      byte bt = b1;
+
+      if ((int.Parse(b1.ToString()) + int.Parse(b2.ToString())) > byte.MaxValue && isAddition)
+        return bt = byte.MaxValue;
+      else if ((int.Parse(b1.ToString()) - int.Parse(b2.ToString())) < byte.MinValue && !isAddition)
+        return bt = byte.MinValue;
+
+      if (isAddition)
+        bt = (byte)(b1 + b2);
+      else
+        bt = (byte)(b1 - b2);
+
+      return bt;
     }
   }
 }

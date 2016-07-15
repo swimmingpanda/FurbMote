@@ -24,7 +24,7 @@ namespace FurbMote {
     /// </summary>
     /// <param name="e">Event data that describes how this page was reached.
     /// This parameter is typically used to configure the page.</param>
-    protected override void OnNavigatedTo(NavigationEventArgs e) {
+    protected override async void OnNavigatedTo(NavigationEventArgs e) {
       // TODO: Prepare page for display here.
 
       // TODO: If your application contains multiple pages, ensure that you are
@@ -32,10 +32,14 @@ namespace FurbMote {
       // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
       // If you are using the NavigationHelper provided by some templates,
       // this event is handled for you.
+
+      Windows.UI.ViewManagement.StatusBar statusBar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();
+      statusBar.BackgroundColor = Windows.UI.Color.FromArgb(0, 0x00, 0xAB, 0xA9);
+      statusBar.BackgroundOpacity = 1;
     }
 
     private void PlayBtn_Click(object sender, RoutedEventArgs e) {
-      Common.PlayMedia(ApplicationData.Current.LocalFolder.Path + "\\" + SoundNameBox.Text + ".wav", LayoutRoot);
+      //Common.PlayMedia(ApplicationData.Current.LocalFolder.Path + "\\" + SoundNameBox.Text + ".wav", LayoutRoot);
     }
 
     private async void OpenArchiveBtn_Click(object sender, RoutedEventArgs e) {
@@ -53,7 +57,11 @@ namespace FurbMote {
     }
 
     private void Progress_ProgressChanged(object sender, float e) {
-      PBar.Value = e;
+      //PBar.Value = e;
+    }
+
+    private void AdvBtn_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e) {
+      AdvBtn.Title = "Tapped";
     }
   }
 }

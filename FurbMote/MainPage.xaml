@@ -8,10 +8,16 @@
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   mc:Ignorable="d"
   Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+  <Page.Transitions>
+    <TransitionCollection>
+      <EdgeUIThemeTransition Edge="Left"/>
+    </TransitionCollection>
+  </Page.Transitions>
+
 
   <Grid x:Name="LayoutRoot">
     <Grid.RowDefinitions>
-      <RowDefinition Height="0.5*"/>
+      <RowDefinition Height="Auto"/>
       <RowDefinition Height="*"/>
       <RowDefinition Height="*"/>
       <RowDefinition Height="*"/>
@@ -19,11 +25,11 @@
     </Grid.RowDefinitions>
 
     <Grid Grid.Row="0" Background="#00ABA9">
-      <TextBlock Text="Furbmote" FontSize="50" FontWeight="Light" VerticalAlignment="Center" Padding="9,0" HorizontalAlignment="Center"/>
+      <controls:Header Text="Furbmote"/>
     </Grid>
-    <controls:BigColorButton x:Name="CommonBtn" Grid.Row="1" BackColor="#FF8C00" Title="Common Commands" UseThemeForHoverColor="True"/>
+    <controls:BigColorButton x:Name="CommonBtn" Grid.Row="1" BackColor="#D80073" Title="Common Commands" UseThemeForHoverColor="True"/>
     <controls:BigColorButton x:Name="AdvBtn" Grid.Row="2" BackColor="#9ACD32" Title="Advanced" UseThemeForHoverColor="True" Tapped="AdvBtn_Tapped"/>
     <controls:BigColorButton x:Name="InteractiveBtn" Grid.Row="3" BackColor="#800080" Title="Interactive Mode" UseThemeForHoverColor="True"/>
-    <controls:BigColorButton x:Name="SettingsBtn" Grid.Row="4" BackColor="#F08080" Title="Settings" UseThemeForHoverColor="True"/>
+    <controls:BigColorButton x:Name="SettingsBtn" Grid.Row="4" BackColor="#FA6800" Title="Settings" UseThemeForHoverColor="True" NavigateToPage="View.Settings.SettingsPage" Tapped="SettingsBtn_Tapped"/>
   </Grid>
 </Page>

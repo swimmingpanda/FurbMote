@@ -25,11 +25,13 @@ namespace FurbMote.Controls {
     public static readonly DependencyProperty BackColorHoverProperty = DependencyProperty.Register("BackColorHover", typeof(SolidColorBrush), typeof(BigColorButton), null);
     public static readonly DependencyProperty TitleProperty = DependencyProperty.Register("Title", typeof(string), typeof(BigColorButton), null);
     public static readonly DependencyProperty ColorChangeProperty = DependencyProperty.Register("UseThemeForHoverColor", typeof(bool), typeof(BigColorButton), null);
+    public static readonly DependencyProperty PageNavProperty = DependencyProperty.Register("NavigateToPage", typeof(string), typeof(BigColorButton), null);
 
     public SolidColorBrush BackColor { set { grid.Background = value; BgColor = value; } }
     public SolidColorBrush BackColorHover { set { BgColorHover = value; } }
     public string Title { set { text.Text = value; } }
     public bool UseThemeForHoverColor { set { BgChange = value; } }
+    public string NavigateToPage { get; set; }
 
     SolidColorBrush BgColor;
     SolidColorBrush BgColorHover;

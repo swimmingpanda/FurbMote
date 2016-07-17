@@ -24,7 +24,7 @@ namespace FurbMote {
     /// </summary>
     /// <param name="e">Event data that describes how this page was reached.
     /// This parameter is typically used to configure the page.</param>
-    protected override async void OnNavigatedTo(NavigationEventArgs e) {
+    protected override void OnNavigatedTo(NavigationEventArgs e) {
       // TODO: Prepare page for display here.
 
       // TODO: If your application contains multiple pages, ensure that you are
@@ -62,6 +62,11 @@ namespace FurbMote {
 
     private void AdvBtn_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e) {
       AdvBtn.Title = "Tapped";
+    }
+
+    private void SettingsBtn_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e) {
+      var btn = sender as Controls.BigColorButton;
+      this.Frame.Navigate(typeof(Views.Settings.SettingsPage));
     }
   }
 }

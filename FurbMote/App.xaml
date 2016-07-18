@@ -4,90 +4,54 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:FurbMote">
   <Application.Resources>
-    
-    <!-- Big Button -->
-    <Thickness x:Key="PhoneBorderThickness">0</Thickness>
-    <FontFamily x:Key="PhoneFontFamilyNormal">Segoe WP</FontFamily>
-    <FontWeight x:Key="PhoneButtonFontWeight">Light</FontWeight>
-    <x:Double x:Key="TextStyleLargeFontSize">18.14</x:Double>
-    <Thickness x:Key="PhoneButtonContentPadding">0</Thickness>
-    <x:Double x:Key="PhoneButtonMinHeight">57.5</x:Double>
-    <x:Double x:Key="PhoneButtonMinWidth">109</x:Double>
-    <Thickness x:Key="PhoneTouchTargetOverhang">0,0</Thickness>
-    <SolidColorBrush x:Key="ButtonDisabledBackgroundThemeBrush" Color="Transparent"/>
-    <Style x:Key="BigButtonStyle" TargetType="Button">
-      <Setter Property="Background" Value="Transparent"/>
-      <Setter Property="BorderBrush" Value="{ThemeResource PhoneForegroundBrush}"/>
-      <Setter Property="Foreground" Value="{ThemeResource PhoneForegroundBrush}"/>
-      <Setter Property="BorderThickness" Value="{ThemeResource PhoneBorderThickness}"/>
-      <Setter Property="FontFamily" Value="{ThemeResource PhoneFontFamilyNormal}"/>
-      <Setter Property="FontWeight" Value="{ThemeResource PhoneButtonFontWeight}"/>
-      <Setter Property="FontSize" Value="{ThemeResource TextStyleLargeFontSize}"/>
-      <Setter Property="Padding" Value="{ThemeResource PhoneButtonContentPadding}"/>
-      <Setter Property="MinHeight" Value="{ThemeResource PhoneButtonMinHeight}"/>
-      <Setter Property="MinWidth" Value="{ThemeResource PhoneButtonMinWidth}"/>
-      <Setter Property="HorizontalAlignment" Value="Left"/>
-      <Setter Property="VerticalAlignment" Value="Center"/>
+
+    <!-- SuggestBox -->
+    <Thickness x:Key="TextControlMarginThemeThickness">0,0,0,0</Thickness>
+    <Thickness x:Key="AutoSuggestListViewItemMargin">6.5,9.5,0,0</Thickness>
+    <x:Double x:Key="ContentControlFontSize">20.26</x:Double>
+    <Thickness x:Key="TextControlBorderThemeThickness">0</Thickness>
+    <Style x:Key="CustomSuggestBoxStyle" TargetType="AutoSuggestBox">
+      <Setter Property="Margin" Value="{ThemeResource TextControlMarginThemeThickness}"/>
+      <Setter Property="VerticalAlignment" Value="Top"/>
+      <Setter Property="IsTabStop" Value="False"/>
+      <Setter Property="ItemContainerStyle">
+        <Setter.Value>
+          <Style TargetType="ListViewItem">
+            <Setter Property="Margin" Value="{ThemeResource AutoSuggestListViewItemMargin}"/>
+            <Setter Property="FontSize" Value="{ThemeResource ContentControlFontSize}"/>
+            <Setter Property="Foreground" Value="{ThemeResource TextBoxForegroundThemeBrush}"/>
+          </Style>
+        </Setter.Value>
+      </Setter>
       <Setter Property="Template">
         <Setter.Value>
-          <ControlTemplate TargetType="Button">
-            <Grid x:Name="Grid" Background="Transparent">
+          <ControlTemplate TargetType="AutoSuggestBox">
+            <Grid>
               <VisualStateManager.VisualStateGroups>
-                <VisualStateGroup x:Name="CommonStates">
-                  <VisualStateGroup.Transitions>
-                    <VisualTransition From="Pressed" To="PointerOver">
-                      <Storyboard>
-                        <PointerUpThemeAnimation Storyboard.TargetName="Grid"/>
-                      </Storyboard>
-                    </VisualTransition>
-                    <VisualTransition From="PointerOver" To="Normal">
-                      <Storyboard>
-                        <PointerUpThemeAnimation Storyboard.TargetName="Grid"/>
-                      </Storyboard>
-                    </VisualTransition>
-                    <VisualTransition From="Pressed" To="Normal">
-                      <Storyboard>
-                        <PointerUpThemeAnimation Storyboard.TargetName="Grid"/>
-                      </Storyboard>
-                    </VisualTransition>
-                  </VisualStateGroup.Transitions>
-                  <VisualState x:Name="Normal"/>
-                  <VisualState x:Name="PointerOver"/>
-                  <VisualState x:Name="Pressed">
-                    <Storyboard>
-                      <PointerDownThemeAnimation Storyboard.TargetName="Grid"/>
-                      <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
-                        <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonPressedForegroundThemeBrush}"/>
-                      </ObjectAnimationUsingKeyFrames>
-                      <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="Border">
-                        <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonPressedBackgroundThemeBrush}"/>
-                      </ObjectAnimationUsingKeyFrames>
-                    </Storyboard>
-                  </VisualState>
-                  <VisualState x:Name="Disabled">
-                    <Storyboard>
-                      <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
-                        <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonDisabledForegroundThemeBrush}"/>
-                      </ObjectAnimationUsingKeyFrames>
-                      <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="Border">
-                        <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonDisabledBorderThemeBrush}"/>
-                      </ObjectAnimationUsingKeyFrames>
-                      <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="Border">
-                        <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonDisabledBackgroundThemeBrush}"/>
-                      </ObjectAnimationUsingKeyFrames>
-                    </Storyboard>
-                  </VisualState>
+                <VisualStateGroup x:Name="Orientation">
+                  <VisualState x:Name="Landscape"/>
+                  <VisualState x:Name="Portrait"/>
                 </VisualStateGroup>
               </VisualStateManager.VisualStateGroups>
-              <Border x:Name="Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" Background="{TemplateBinding Background}" Margin="0">
-                <ContentPresenter x:Name="ContentPresenter" AutomationProperties.AccessibilityView="Raw" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="0" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-              </Border>
+              <TextBox x:Name="TextBox" ScrollViewer.BringIntoViewOnFocusChange="False" Opacity="0.33" Background="White" BorderThickness="0" Padding="9" Header="{Binding Header, RelativeSource={RelativeSource Mode=TemplatedParent}}" Margin="0" PlaceholderText="{Binding PlaceholderText, RelativeSource={RelativeSource Mode=TemplatedParent}}" Width="{TemplateBinding Width}" Canvas.ZIndex="0"/>
+              <Popup x:Name="SuggestionsPopup">
+                <Border x:Name="SuggestionsContainer" BorderBrush="Transparent" BorderThickness="{ThemeResource TextControlBorderThemeThickness}" Background="{ThemeResource AutoSuggestBackgroundThemeBrush}">
+                  <Border.RenderTransform>
+                    <TranslateTransform x:Name="UpwardTransform"/>
+                  </Border.RenderTransform>
+                  <ListView x:Name="SuggestionsList" ItemTemplate="{Binding ItemTemplate, RelativeSource={RelativeSource Mode=TemplatedParent}}" ItemsSource="{Binding ItemsSource, RelativeSource={RelativeSource Mode=TemplatedParent}}" ItemContainerStyle="{Binding ItemContainerStyle, RelativeSource={RelativeSource Mode=TemplatedParent}}" ItemTemplateSelector="{Binding ItemTemplateSelector, RelativeSource={RelativeSource Mode=TemplatedParent}}" RenderTransformOrigin=".5,.5">
+                    <ListView.RenderTransform>
+                      <ScaleTransform x:Name="ListItemOrderTransform"/>
+                    </ListView.RenderTransform>
+                  </ListView>
+                </Border>
+              </Popup>
             </Grid>
           </ControlTemplate>
         </Setter.Value>
       </Setter>
     </Style>
-    
+
   </Application.Resources>
 
 </Application>

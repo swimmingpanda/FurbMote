@@ -1,0 +1,36 @@
+﻿<Page
+    x:Class="FurbMote.Views.AdvancedPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FurbMote.Views"
+    xmlns:controls="using:FurbMote.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+  <Page.Transitions>
+    <TransitionCollection>
+      <EdgeUIThemeTransition Edge="Right"/>
+    </TransitionCollection>
+  </Page.Transitions>
+
+  <Grid Background="#9ACD32">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+
+    <Grid>
+      <controls:Header Text="Advanced"/>
+    </Grid>
+    <Grid Grid.Row="1" Background="#44ffffff">
+      <AutoSuggestBox x:Name="suggestBox" AutoMaximizeSuggestionArea="True" PlaceholderText="Command name or ID" SuggestionChosen="suggestBox_SuggestionChosen" TextChanged="suggestBox_TextChanged" ItemsSource="{Binding}" Style="{StaticResource CustomSuggestBoxStyle}">
+        <AutoSuggestBox.ItemTemplate>
+          <DataTemplate>
+            <TextBlock Text="{Binding Entry}"/>
+          </DataTemplate>
+        </AutoSuggestBox.ItemTemplate>
+      </AutoSuggestBox>
+    </Grid>
+  </Grid>
+</Page>

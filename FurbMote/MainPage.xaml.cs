@@ -61,7 +61,7 @@ namespace FurbMote {
     }
 
     private void AdvBtn_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e) {
-      AdvBtn.Title = "Tapped";
+      this.Frame.Navigate(typeof(Views.AdvancedPage));
     }
 
     private void SettingsBtn_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e) {

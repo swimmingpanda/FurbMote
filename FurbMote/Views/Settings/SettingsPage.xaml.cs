@@ -45,28 +45,6 @@ namespace FurbMote.Views.Settings {
       Windows.UI.ViewManagement.StatusBar statusBar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();
       statusBar.BackgroundColor = Windows.UI.Color.FromArgb(0, 0xFA, 0x68, 0x00);
       statusBar.BackgroundOpacity = 1;
-
-      ReadCsv();
-    }
-
-    async void ReadCsv() {
-      StorageFolder rootFolder = Windows.ApplicationModel.Package.Current.InstalledLocation;
-      StorageFolder assetFolder = await rootFolder.GetFolderAsync("Assets");
-      StorageFile file = await assetFolder.GetFileAsync("CommandList.csv");
-      Stream stream = await file.OpenStreamForReadAsync();
-      StreamReader reader = new StreamReader(stream);
-      var csv = new CsvHelper.CsvReader(reader);
-      records = new ObservableCollection<Common.Commands>(csv.GetRecords<Common.Commands>());
-      suggestBox.ItemsSource = records;
-    }
-
-    private void suggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args) {
-      suggestBox.Text += " Chosen";
-    }
-
-    private void suggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args) {
-      if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput) {
-      }
     }
 
   }

@@ -119,6 +119,7 @@ namespace FurbMote {
     public class Commands {
       public int Id { get; set; }
       public string Name { get; set; }
+      public string Entry { get { return Id.ToString() + ": " + Name; } }
     }
   }
 }

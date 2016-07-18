@@ -25,13 +25,6 @@
       <controls:Header Text="Settings"/>
     </Grid>
     <Grid Grid.Row="1" Background="#44ffffff">
-      <AutoSuggestBox x:Name="suggestBox" AutoMaximizeSuggestionArea="True" PlaceholderText="search" SuggestionChosen="suggestBox_SuggestionChosen" TextChanged="suggestBox_TextChanged" ItemsSource="{Binding}">
-        <AutoSuggestBox.ItemTemplate>
-          <DataTemplate>
-            <TextBlock Text="{Binding Name}"/>
-          </DataTemplate>
-        </AutoSuggestBox.ItemTemplate>
-      </AutoSuggestBox>
     </Grid>
   </Grid>
 </Page>

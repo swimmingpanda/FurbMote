@@ -53,7 +53,7 @@ namespace FurbMote {
 
       var progress = new Progress<float>();
       progress.ProgressChanged += Progress_ProgressChanged;
-      await Common.ExtractDoubleArchive(file, local, progress, true);
+      await Common.ExtractSounds();
     }
 
     private void Progress_ProgressChanged(object sender, float e) {

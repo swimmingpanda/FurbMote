@@ -27,11 +27,22 @@ namespace FurbMote {
     }
 
     /// <summary>
+    /// Plays the command for a command-name.
+    /// </summary>
+    /// <param name="commandName">The name of the command.</param>
+    /// <param name="element">Element (Grid) where the MediaElement will be created.</param>
+    public static async void PlayFurbyCommand (string commandName, Grid element) {
+      StorageFolder local = ApplicationData.Current.LocalFolder;
+      StorageFile file = await local.GetFileAsync(commandName + ".wav");
+      PlayMedia(file.Path, element);
+    }
+
+    /// <summary>
     /// Extracts an archive to a folder.
     /// </summary>
     /// <param name="archive">The archive file.</param>
     /// <param name="folder">The folder to extract the contents of the archive.</param>
-    public static async Task ExtractArchive(StorageFile archive, StorageFolder folder) {
+    private static async Task ExtractArchive(StorageFile archive, StorageFolder folder) {
       using (Stream stream = await archive.OpenStreamForReadAsync()) {
         var reader = ReaderFactory.Open(stream);
         while (reader.MoveToNextEntry()) {
@@ -52,7 +63,7 @@ namespace FurbMote {
     /// </summary>
     /// <param name="archive">The archive file.</param>
     /// <param name="folder">The folder to extract the content of the archive.</param>
-    public static async Task<string> ExtractSingleArchive(StorageFile archive, StorageFolder folder) {
+    private static async Task<string> ExtractSingleArchive(StorageFile archive, StorageFolder folder) {
       string name = null;
       using (Stream stream = await archive.OpenStreamForReadAsync()) {
         var reader = ReaderFactory.Open(stream);
@@ -78,20 +89,42 @@ namespace FurbMote {
     /// <param name="folder">The folder to extract the content of the archive.</param>
     /// <param name="progress">The current progress of the operation.</param>
     /// <param name="deleteSecondArchive">Optionally delete the second archive.</param>
-    public static async Task ExtractDoubleArchive(StorageFile archive, StorageFolder folder, IProgress<float> progress, bool deleteSecondArchive = false) {
+    private static async Task ExtractDoubleArchive(StorageFile archive, StorageFolder folder, IProgress<float> progress, bool deleteSecondArchive = false) {
       progress.Report(0f);
       string fileName = await ExtractSingleArchive(archive, folder);
       progress.Report(0.25f);
       StorageFile file = await folder.GetFileAsync(fileName);
       progress.Report(0.5f);
-      await ExtractArchive(file, folder);
+      await ExtractSingleArchive(file, folder);
       progress.Report(0.75f);
       if (deleteSecondArchive) await file.DeleteAsync();
       progress.Report(1.0f);
     }
+    
+    /// <summary>
+    /// Extracts the archive containing all the sound files.
+    /// </summary>
+    /// <returns></returns>
+    public static async Task ExtractSounds() {
+      StorageFolder rootFolder = Windows.ApplicationModel.Package.Current.InstalledLocation;
+      StorageFolder assetFolder = await rootFolder.GetFolderAsync("Assets");
+      StorageFile file = await assetFolder.GetFileAsync("Sound.zip");
 
+      StorageFolder local = ApplicationData.Current.LocalFolder;
+
+      var progress = new Progress<float>();
+      await ExtractDoubleArchive(file, local, progress, true);
+    }
+
+    /// <summary>
+    /// Shifts a color lighter or darker and returns it.
+    /// </summary>
+    /// <param name="color">The color you want to shift.</param>
+    /// <param name="value">Shift strength.</param>
+    /// <param name="isLight">Shift lighter. Else shift darker.</param>
+    /// <returns>Shifted Color</returns>
     public static Color ShiftColor(Color color, byte value, bool isLight) {
-      byte[] bs = { color.R, color.G, color.B };
+      byte[] bs = { color.R, color.G, color.B }; // array of bytes for RGB values
 
       for (int i = 0; i < bs.Length; i++)
         bs[i] = OperateByteValue(bs[i], value, isLight);

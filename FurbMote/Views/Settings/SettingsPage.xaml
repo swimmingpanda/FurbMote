@@ -24,7 +24,7 @@
     <Grid>
       <controls:Header Text="Settings"/>
     </Grid>
-    <Grid Grid.Row="1" Background="#44ffffff">
+    <Grid Grid.Row="1" Background="#33ffffff">
     </Grid>
   </Grid>
 </Page>

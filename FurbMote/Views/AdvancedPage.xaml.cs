@@ -57,11 +57,12 @@ namespace FurbMote.Views {
       var csv = new CsvHelper.CsvReader(reader);
       records = new ObservableCollection<Common.Commands>(csv.GetRecords<Common.Commands>());
       suggestBox.ItemsSource = records;
+      commandListView.ItemsSource = records;
     }
 
     private void suggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args) {
       Common.Commands item = (Common.Commands)args.SelectedItem;
-      suggestBox.Text = item.Entry + " Chosen";
+      sender.Text = item.Entry + " Chosen";
     }
 
     private void suggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args) {
@@ -71,9 +72,13 @@ namespace FurbMote.Views {
           if (item.Entry.ToLowerInvariant().Contains(sender.Text.ToLowerInvariant()))
             tList.Add(item);
         }
-        sender.ItemsSource = tList;
+        commandListView.ItemsSource = tList;
       }
     }
 
+    private void commandListView_ItemClick(object sender, ItemClickEventArgs e) {
+      Common.Commands item = (Common.Commands)e.ClickedItem;
+      Common.PlayFurbyCommand(item.Name, layoutRoot);
+    }
   }
 }

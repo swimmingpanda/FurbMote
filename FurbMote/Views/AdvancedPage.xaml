@@ -14,7 +14,7 @@
     </TransitionCollection>
   </Page.Transitions>
 
-  <Grid Background="#9ACD32">
+  <Grid x:Name="layoutRoot" Background="#9ACD32">
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto"/>
       <RowDefinition Height="*"/>
@@ -23,14 +23,25 @@
     <Grid>
       <controls:Header Text="Advanced"/>
     </Grid>
-    <Grid Grid.Row="1" Background="#44ffffff">
-      <AutoSuggestBox x:Name="suggestBox" AutoMaximizeSuggestionArea="True" PlaceholderText="Command name or ID" SuggestionChosen="suggestBox_SuggestionChosen" TextChanged="suggestBox_TextChanged" ItemsSource="{Binding}" Style="{StaticResource CustomSuggestBoxStyle}">
+    <Grid Grid.Row="1" Background="#33ffffff">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+      <AutoSuggestBox x:Name="suggestBox" AutoMaximizeSuggestionArea="True" PlaceholderText="Command name or ID" SuggestionChosen="suggestBox_SuggestionChosen" TextChanged="suggestBox_TextChanged" ItemsSource="{Binding}" Style="{StaticResource CustomSuggestBoxStyle}" >
         <AutoSuggestBox.ItemTemplate>
           <DataTemplate>
             <TextBlock Text="{Binding Entry}"/>
           </DataTemplate>
         </AutoSuggestBox.ItemTemplate>
       </AutoSuggestBox>
+      <ListView x:Name="commandListView" Grid.Row="1" ItemsSource="{Binding}" ItemClick="commandListView_ItemClick" IsItemClickEnabled="True">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <TextBlock Text="{Binding Entry}" Style="{ThemeResource BaseTextBlockStyle}" Padding="6,3,3,3"/>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
     </Grid>
   </Grid>
 </Page>

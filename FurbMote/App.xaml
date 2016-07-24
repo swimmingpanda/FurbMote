@@ -39,7 +39,7 @@
                   <Border.RenderTransform>
                     <TranslateTransform x:Name="UpwardTransform"/>
                   </Border.RenderTransform>
-                  <ListView x:Name="SuggestionsList" ItemTemplate="{Binding ItemTemplate, RelativeSource={RelativeSource Mode=TemplatedParent}}" ItemsSource="{Binding ItemsSource, RelativeSource={RelativeSource Mode=TemplatedParent}}" ItemContainerStyle="{Binding ItemContainerStyle, RelativeSource={RelativeSource Mode=TemplatedParent}}" ItemTemplateSelector="{Binding ItemTemplateSelector, RelativeSource={RelativeSource Mode=TemplatedParent}}" RenderTransformOrigin=".5,.5">
+                  <ListView x:Name="SuggestionsList" Height="0" ItemTemplate="{Binding ItemTemplate, RelativeSource={RelativeSource Mode=TemplatedParent}}" ItemsSource="{Binding ItemsSource, RelativeSource={RelativeSource Mode=TemplatedParent}}" ItemContainerStyle="{Binding ItemContainerStyle, RelativeSource={RelativeSource Mode=TemplatedParent}}" ItemTemplateSelector="{Binding ItemTemplateSelector, RelativeSource={RelativeSource Mode=TemplatedParent}}" RenderTransformOrigin=".5,.5">
                     <ListView.RenderTransform>
                       <ScaleTransform x:Name="ListItemOrderTransform"/>
                     </ListView.RenderTransform>

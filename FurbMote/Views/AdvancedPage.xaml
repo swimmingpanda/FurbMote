@@ -16,7 +16,7 @@
 
   <Grid x:Name="layoutRoot" Background="#9ACD32">
     <Grid.RowDefinitions>
-      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="0"/>
       <RowDefinition Height="*"/>
     </Grid.RowDefinitions>
 
@@ -28,7 +28,7 @@
         <RowDefinition Height="Auto"/>
         <RowDefinition Height="*"/>
       </Grid.RowDefinitions>
-      <AutoSuggestBox x:Name="suggestBox" AutoMaximizeSuggestionArea="True" PlaceholderText="Command name or ID" SuggestionChosen="suggestBox_SuggestionChosen" TextChanged="suggestBox_TextChanged" ItemsSource="{Binding}" Style="{StaticResource CustomSuggestBoxStyle}" >
+      <AutoSuggestBox x:Name="suggestBox" AutoMaximizeSuggestionArea="True" PlaceholderText="Command name or ID" TextChanged="suggestBox_TextChanged" ItemsSource="{Binding}" Style="{StaticResource CustomSuggestBoxStyle}" >
         <AutoSuggestBox.ItemTemplate>
           <DataTemplate>
             <TextBlock Text="{Binding Entry}"/>

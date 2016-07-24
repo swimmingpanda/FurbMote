@@ -31,7 +31,7 @@ namespace FurbMote.Views {
     }
 
     private void HardwareButtons_BackPressed(object sender, Windows.Phone.UI.Input.BackPressedEventArgs e) {
-      Frame.Navigate(typeof(MainPage));
+      AppShell.NavFrameNavigate(typeof(MainPage), Windows.UI.Color.FromArgb(0, 0x00, 0xAB, 0xA9), "Furbmote");// Frame.Navigate(typeof(MainPage));
       e.Handled = true;
     }
 
@@ -40,29 +40,10 @@ namespace FurbMote.Views {
     /// </summary>
     /// <param name="e">Event data that describes how this page was reached.
     /// This parameter is typically used to configure the page.</param>
-    protected override void OnNavigatedTo(NavigationEventArgs e) {
-      Windows.UI.ViewManagement.StatusBar statusBar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();
-      statusBar.BackgroundColor = Windows.UI.Color.FromArgb(0, 0x9A, 0xCD, 0x32);
-      statusBar.BackgroundOpacity = 1;
-
-      ReadCsv();
-    }
-
-    async void ReadCsv() {
-      StorageFolder rootFolder = Windows.ApplicationModel.Package.Current.InstalledLocation;
-      StorageFolder assetFolder = await rootFolder.GetFolderAsync("Assets");
-      StorageFile file = await assetFolder.GetFileAsync("CommandList.csv");
-      Stream stream = await file.OpenStreamForReadAsync();
-      StreamReader reader = new StreamReader(stream);
-      var csv = new CsvHelper.CsvReader(reader);
-      records = new ObservableCollection<Common.Commands>(csv.GetRecords<Common.Commands>());
+    protected override async void OnNavigatedTo(NavigationEventArgs e) {
+      records = await Common.ReadCsv();
       suggestBox.ItemsSource = records;
       commandListView.ItemsSource = records;
-    }
-
-    private void suggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args) {
-      Common.Commands item = (Common.Commands)args.SelectedItem;
-      sender.Text = item.Entry + " Chosen";
     }
 
     private void suggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args) {

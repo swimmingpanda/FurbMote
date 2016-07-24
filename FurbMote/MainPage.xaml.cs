@@ -32,10 +32,6 @@ namespace FurbMote {
       // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
       // If you are using the NavigationHelper provided by some templates,
       // this event is handled for you.
-
-      Windows.UI.ViewManagement.StatusBar statusBar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();
-      statusBar.BackgroundColor = Windows.UI.Color.FromArgb(0, 0x00, 0xAB, 0xA9);
-      statusBar.BackgroundOpacity = 1;
     }
 
     private void PlayBtn_Click(object sender, RoutedEventArgs e) {
@@ -61,12 +57,15 @@ namespace FurbMote {
     }
 
     private void AdvBtn_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e) {
-      this.Frame.Navigate(typeof(Views.AdvancedPage));
+      AppShell.NavFrameNavigate(typeof(Views.AdvancedPage), Windows.UI.Color.FromArgb(0xFF, 0x9A, 0xCD, 0x32), "Advanced");
+      //this.Frame.Navigate(typeof(Views.AdvancedPage));
     }
 
     private void SettingsBtn_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e) {
       var btn = sender as Controls.BigColorButton;
-      this.Frame.Navigate(typeof(Views.Settings.SettingsPage));
+      AppShell.nFrame.Navigate(typeof(Views.Settings.SettingsPage));
+      //AppShell.NavFrameNavigate(typeof(Views.Settings.SettingsPage));
+      //this.Frame.Navigate(typeof(Views.Settings.SettingsPage));
     }
   }
 }

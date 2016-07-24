@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -147,6 +148,44 @@ namespace FurbMote {
         bt = (byte)(b1 - b2);
 
       return bt;
+    }
+
+    public static void ColorStatusBar(Color color) {
+      Windows.UI.ViewManagement.StatusBar statusBar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();
+      statusBar.BackgroundColor = color;
+      statusBar.BackgroundOpacity = 1;
+      statusBar.ForegroundColor = Colors.White;
+    }
+
+    /// <summary>
+    /// Reads a csv containing the command Names and IDs.
+    /// </summary>
+    /// <returns>Collection with "Commands" elements.</returns>
+    public static async Task<ObservableCollection<Commands>> ReadCsv() {
+      StorageFolder rootFolder = Windows.ApplicationModel.Package.Current.InstalledLocation;
+      StorageFolder assetFolder = await rootFolder.GetFolderAsync("Assets");
+      StorageFile file = await assetFolder.GetFileAsync("CommandList.csv");
+      Stream stream = await file.OpenStreamForReadAsync();
+      StreamReader reader = new StreamReader(stream);
+      CsvHelper.CsvReader csv = new CsvHelper.CsvReader(reader);
+      ObservableCollection<Commands> records = new ObservableCollection<Commands>(csv.GetRecords<Commands>());
+
+      return records;
+    }
+
+    /// <summary>
+    /// Checks if all sound files are present
+    /// </summary>
+    /// <returns>bool</returns>
+    public static async Task<bool> SoundFilesPresent() {
+      StorageFolder local = ApplicationData.Current.LocalFolder;
+      ObservableCollection<Commands> records = await ReadCsv();
+      IReadOnlyList<StorageFile> fileList = await local.GetFilesAsync();
+
+      if (fileList.Count == records.Count)
+        return true;
+      else
+        return false;
     }
 
     public class Commands {

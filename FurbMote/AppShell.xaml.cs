@@ -33,6 +33,9 @@ namespace FurbMote {
 
       nFrame.Navigated += NFrame_Navigated;
       nFrame.Navigating += NFrame_Navigating;
+
+      if (Settings.ShowAdvanced != true && Settings.ShowAdvanced != false)
+        Settings.ShowAdvanced = true;
     }
 
     private void NFrame_Navigating(object sender, NavigatingCancelEventArgs e) {

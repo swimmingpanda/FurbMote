@@ -28,13 +28,7 @@ namespace FurbMote.Views.Settings {
     /// <param name="e">Event data that describes how this page was reached.
     /// This parameter is typically used to configure the page.</param>
     protected override void OnNavigatedTo(NavigationEventArgs e) {
-      CheckFilesBtn.IsChecked = FurbMote.Settings.CheckFiles;
       ShowAdvBtn.IsChecked = FurbMote.Settings.ShowAdvanced;
-    }
-
-    private void CheckFiles_Checked(object sender, RoutedEventArgs e) {
-      var box = sender as CheckBox;
-      FurbMote.Settings.CheckFiles = box.IsChecked.Value;
     }
 
     private void ShowAdvanced_Checked(object sender, RoutedEventArgs e) {

@@ -19,8 +19,8 @@
     <Grid.RowDefinitions>
       <RowDefinition Height="0"/>
       <RowDefinition Height="*"/>
-      <RowDefinition Height="*"/>
-      <RowDefinition Height="*"/>
+      <RowDefinition Height="*" x:Name="AdvRow"/>
+      <!--<RowDefinition Height="*"/>-->
       <RowDefinition Height="*"/>
     </Grid.RowDefinitions>
 
@@ -29,7 +29,7 @@
     </Grid>
     <controls:BigColorButton x:Name="CommonBtn" Grid.Row="1" BackColor="#D80073" Title="Common Commands" UseThemeForHoverColor="True"/>
     <controls:BigColorButton x:Name="AdvBtn" Grid.Row="2" BackColor="#9ACD32" Title="Advanced" UseThemeForHoverColor="True" Tapped="AdvBtn_Tapped"/>
-    <controls:BigColorButton x:Name="InteractiveBtn" Grid.Row="3" BackColor="#800080" Title="Interactive Mode" UseThemeForHoverColor="True"/>
-    <controls:BigColorButton x:Name="SettingsBtn" Grid.Row="4" BackColor="#FA6800" Title="Settings" UseThemeForHoverColor="True" NavigateToPage="View.Settings.SettingsPage" Tapped="SettingsBtn_Tapped"/>
+    <!--<controls:BigColorButton x:Name="InteractiveBtn" Grid.Row="3" BackColor="#800080" Title="Interactive Mode" UseThemeForHoverColor="True"/>-->
+    <controls:BigColorButton x:Name="SettingsBtn" Grid.Row="3" BackColor="#FA6800" Title="Settings" UseThemeForHoverColor="True" NavigateToPage="View.Settings.SettingsPage" Tapped="SettingsBtn_Tapped"/>
   </Grid>
 </Page>

@@ -1,29 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
+﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Windows.Storage;
-using System.Collections.ObjectModel;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
 namespace FurbMote.Views.Settings {
+
   /// <summary>
   /// An empty page that can be used on its own or navigated to within a Frame.
   /// </summary>
   public sealed partial class SettingsPage : Page {
-
-    ObservableCollection<Common.Commands> records;
 
     public SettingsPage() {
       this.InitializeComponent();
@@ -32,7 +18,7 @@ namespace FurbMote.Views.Settings {
     }
 
     private void HardwareButtons_BackPressed(object sender, Windows.Phone.UI.Input.BackPressedEventArgs e) {
-      Frame.Navigate(typeof(MainPage));
+      AppShell.NavFrameHome();
       e.Handled = true;
     }
 
@@ -42,10 +28,18 @@ namespace FurbMote.Views.Settings {
     /// <param name="e">Event data that describes how this page was reached.
     /// This parameter is typically used to configure the page.</param>
     protected override void OnNavigatedTo(NavigationEventArgs e) {
-      Windows.UI.ViewManagement.StatusBar statusBar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();
-      statusBar.BackgroundColor = Windows.UI.Color.FromArgb(0, 0xFA, 0x68, 0x00);
-      statusBar.BackgroundOpacity = 1;
+      CheckFilesBtn.IsChecked = FurbMote.Settings.CheckFiles;
+      ShowAdvBtn.IsChecked = FurbMote.Settings.ShowAdvanced;
     }
 
+    private void CheckFiles_Checked(object sender, RoutedEventArgs e) {
+      var box = sender as CheckBox;
+      FurbMote.Settings.CheckFiles = box.IsChecked.Value;
+    }
+
+    private void ShowAdvanced_Checked(object sender, RoutedEventArgs e) {
+      var box = sender as CheckBox;
+      FurbMote.Settings.ShowAdvanced = box.IsChecked.Value;
+    }
   }
 }

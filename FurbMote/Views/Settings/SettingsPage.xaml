@@ -11,20 +11,17 @@
   Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
   <Page.Transitions>
     <TransitionCollection>
-      <EdgeUIThemeTransition Edge="Right"/>
+      <EdgeUIThemeTransition Edge="Right" />
     </TransitionCollection>
   </Page.Transitions>
 
   <Grid Background="#FA6800">
-    <Grid.RowDefinitions>
-      <RowDefinition Height="Auto"/>
-      <RowDefinition Height="*"/>
-    </Grid.RowDefinitions>
 
-    <Grid>
-      <controls:Header Text="Settings"/>
-    </Grid>
-    <Grid Grid.Row="1" Background="#33ffffff">
+    <Grid Background="#33ffffff">
+      <StackPanel Margin="15,0">
+        <CheckBox Content="Check if all files are present on startup" Checked="CheckFiles_Checked" Unchecked="CheckFiles_Checked" x:Name="CheckFilesBtn"/>
+        <CheckBox Content="Enable advanced commands" Checked="ShowAdvanced_Checked" Unchecked="ShowAdvanced_Checked" x:Name="ShowAdvBtn"/>
+      </StackPanel>
     </Grid>
   </Grid>
 </Page>

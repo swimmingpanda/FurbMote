@@ -4,6 +4,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FurbMote", "FurbMote\FurbMote.csproj", "{8DBD02AA-C178-4B6E-A872-2359DE905F02}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4BAD28E4-B1FC-4445-8648-5F271AFAAC79} = {4BAD28E4-B1FC-4445-8648-5F271AFAAC79}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpCompress.Mini", "SharpCompress.Mini\SharpCompress.Mini.csproj", "{4BAD28E4-B1FC-4445-8648-5F271AFAAC79}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +38,18 @@ Global
 		{8DBD02AA-C178-4B6E-A872-2359DE905F02}.Release|x86.ActiveCfg = Release|x86
 		{8DBD02AA-C178-4B6E-A872-2359DE905F02}.Release|x86.Build.0 = Release|x86
 		{8DBD02AA-C178-4B6E-A872-2359DE905F02}.Release|x86.Deploy.0 = Release|x86
+		{4BAD28E4-B1FC-4445-8648-5F271AFAAC79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BAD28E4-B1FC-4445-8648-5F271AFAAC79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BAD28E4-B1FC-4445-8648-5F271AFAAC79}.Debug|ARM.ActiveCfg = Debug|ARM
+		{4BAD28E4-B1FC-4445-8648-5F271AFAAC79}.Debug|ARM.Build.0 = Debug|ARM
+		{4BAD28E4-B1FC-4445-8648-5F271AFAAC79}.Debug|x86.ActiveCfg = Debug|x86
+		{4BAD28E4-B1FC-4445-8648-5F271AFAAC79}.Debug|x86.Build.0 = Debug|x86
+		{4BAD28E4-B1FC-4445-8648-5F271AFAAC79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BAD28E4-B1FC-4445-8648-5F271AFAAC79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BAD28E4-B1FC-4445-8648-5F271AFAAC79}.Release|ARM.ActiveCfg = Release|ARM
+		{4BAD28E4-B1FC-4445-8648-5F271AFAAC79}.Release|ARM.Build.0 = Release|ARM
+		{4BAD28E4-B1FC-4445-8648-5F271AFAAC79}.Release|x86.ActiveCfg = Release|x86
+		{4BAD28E4-B1FC-4445-8648-5F271AFAAC79}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

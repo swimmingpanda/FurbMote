@@ -18,5 +18,10 @@
     <Grid x:Name="hGrid" Background="Transparent"/>
 
     <Grid x:Name="nGrid" Grid.Row="1" Background="Transparent"/>
+
+    <StackPanel x:Name="pGrid" Grid.Row="1" VerticalAlignment="Center">
+      <ProgressRing x:Name="pRing" HorizontalAlignment="Center" Background="Transparent" Foreground="White" IsActive="False"/>
+      <TextBlock x:Name="pText" Style="{ThemeResource BaseTextBlockStyle}" HorizontalAlignment="Center" TextWrapping="Wrap" Padding="24,6"/>
+    </StackPanel>
   </Grid>
 </Page>

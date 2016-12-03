@@ -25,13 +25,16 @@ namespace FurbMote {
     /// <param name="e">Event data that describes how this page was reached.
     /// This parameter is typically used to configure the page.</param>
     protected override void OnNavigatedTo(NavigationEventArgs e) {
-      // TODO: Prepare page for display here.
-
-      // TODO: If your application contains multiple pages, ensure that you are
-      // handling the hardware Back button by registering for the
-      // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
-      // If you are using the NavigationHelper provided by some templates,
-      // this event is handled for you.
+      if (Settings.ShowAdvanced == false) {
+        GridLength len = new GridLength(0);
+        AdvRow.Height = len;
+        AdvBtn.Visibility = Visibility.Collapsed;
+      }
+      else {
+        GridLength len = new GridLength(1, GridUnitType.Star);
+        AdvRow.Height = len;
+        AdvBtn.Visibility = Visibility.Visible;
+      }
     }
 
     private void PlayBtn_Click(object sender, RoutedEventArgs e) {
@@ -63,8 +66,7 @@ namespace FurbMote {
 
     private void SettingsBtn_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e) {
       var btn = sender as Controls.BigColorButton;
-      AppShell.nFrame.Navigate(typeof(Views.Settings.SettingsPage));
-      //AppShell.NavFrameNavigate(typeof(Views.Settings.SettingsPage));
+      AppShell.NavFrameNavigate(typeof(Views.Settings.SettingsPage), Windows.UI.Color.FromArgb(0xFF, 0xFA, 0x68, 0x00), "Settings");
       //this.Frame.Navigate(typeof(Views.Settings.SettingsPage));
     }
   }

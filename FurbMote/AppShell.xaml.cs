@@ -48,13 +48,22 @@ namespace FurbMote {
     /// <param name="e">Event data that describes how this page was reached.
     /// This parameter is typically used to configure the page.</param>
     protected override async void OnNavigatedTo(NavigationEventArgs e) {
-      if (!await Common.SoundFilesPresent())
+      pRing.IsActive = true;
+      pText.Text = "Checking if all files are present";
+      if (!await Common.SoundFilesPresent()) {
+        pText.Text = "Extracting files";
         await Common.ExtractSounds();
+      }
+      else
+        pText.Text = "All files present";
 
       nGrid.Children.Add(nFrame);
       hGrid.Children.Add(hColor);
       hColor.Children.Add(header);
       NavFrameHome();
+
+      pRing.IsActive = false;
+      pText.Visibility = Visibility.Collapsed;
     }
 
     public static void NavFrameNavigate(Type page, Windows.UI.Color color, string title) {

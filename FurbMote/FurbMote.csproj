@@ -103,6 +103,9 @@
     <Compile Include="Views\AdvancedPage.xaml.cs">
       <DependentUpon>AdvancedPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CommandsPage.xaml.cs">
+      <DependentUpon>CommandsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Settings\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
@@ -147,6 +150,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\AdvancedPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CommandsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

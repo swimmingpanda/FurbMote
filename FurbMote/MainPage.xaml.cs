@@ -46,8 +46,6 @@ namespace FurbMote {
       StorageFolder assetFolder = await rootFolder.GetFolderAsync("Assets");
       StorageFile file = await assetFolder.GetFileAsync("Sound.zip");
 
-      //Stream stream = await file.OpenStreamForReadAsync();
-
       StorageFolder local = ApplicationData.Current.LocalFolder;
 
       var progress = new Progress<float>();
@@ -68,6 +66,10 @@ namespace FurbMote {
       var btn = sender as Controls.BigColorButton;
       AppShell.NavFrameNavigate(typeof(Views.Settings.SettingsPage), Windows.UI.Color.FromArgb(0xFF, 0xFA, 0x68, 0x00), "Settings");
       //this.Frame.Navigate(typeof(Views.Settings.SettingsPage));
+    }
+
+    private void CommonBtn_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e) {
+      AppShell.NavFrameNavigate(typeof(Views.CommandsPage), Windows.UI.Color.FromArgb(0xFF, 0xD8, 0x00, 0x73), "Common Commands");
     }
   }
 }

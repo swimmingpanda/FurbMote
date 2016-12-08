@@ -14,12 +14,27 @@
     </TransitionCollection>
   </Page.Transitions>
 
-  <Grid Background="#D80073">
+  <Grid x:Name="layoutRoot" Background="#D80073">
 
     <Grid Background="#33ffffff">
-      <StackPanel>
-        <controls:BigColorButton x:Name="CommonBtn" Grid.Row="1" BackColor="#ff7fc3" Title="Sleep" UseThemeForHoverColor="True" />
-      </StackPanel>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      <ListView x:Name="firstCommandListView" Grid.Row="1" Grid.Column="0" Margin="0, 0, -3, 0"  ItemsSource="{Binding}" ItemClick="CommandListView_ItemClick" IsItemClickEnabled="True">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <controls:ListButton Title="{Binding DisplayName}" BackColor="#ff7fc3" UseThemeForHoverColor="True"/>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+        </ListView>
+        <ListView x:Name="secondCommandListView" Grid.Row="1" ItemsSource="{Binding}" Margin="-3, 0, 0, 0" ItemClick="CommandListView_ItemClick" IsItemClickEnabled="True" Grid.Column="1">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <controls:ListButton Title="{Binding DisplayName}" BackColor="#ff7fc3" UseThemeForHoverColor="True"/>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
     </Grid>
   </Grid>
 </Page>

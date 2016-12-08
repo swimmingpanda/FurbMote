@@ -192,6 +192,7 @@ namespace FurbMote {
       public int Id { get; set; }
       public string Name { get; set; }
       public string Entry { get { return Id.ToString() + ": " + Name; } }
+      public string DisplayName { get; set; }
     }
   }
 }

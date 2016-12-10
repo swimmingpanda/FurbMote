@@ -29,11 +29,17 @@ namespace FurbMote.Views.Settings {
     /// This parameter is typically used to configure the page.</param>
     protected override void OnNavigatedTo(NavigationEventArgs e) {
       ShowAdvBtn.IsChecked = FurbMote.Settings.ShowAdvanced;
+      CheckFilesBtn.IsChecked = FurbMote.Settings.CheckFiles;
     }
 
     private void ShowAdvanced_Checked(object sender, RoutedEventArgs e) {
       var box = sender as CheckBox;
       FurbMote.Settings.ShowAdvanced = box.IsChecked.Value;
+    }
+
+    private void CheckFiles_Checked(object sender, RoutedEventArgs e) {
+      var box = sender as CheckBox;
+      FurbMote.Settings.CheckFiles = box.IsChecked.Value;
     }
   }
 }

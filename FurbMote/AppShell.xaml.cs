@@ -36,6 +36,8 @@ namespace FurbMote {
 
       if (Settings.ShowAdvanced != true && Settings.ShowAdvanced != false)
         Settings.ShowAdvanced = true;
+      if (Settings.CheckFiles != true && Settings.CheckFiles != false)
+        Settings.CheckFiles = true;
     }
 
     private void NFrame_Navigating(object sender, NavigatingCancelEventArgs e) {
@@ -51,14 +53,16 @@ namespace FurbMote {
     /// <param name="e">Event data that describes how this page was reached.
     /// This parameter is typically used to configure the page.</param>
     protected override async void OnNavigatedTo(NavigationEventArgs e) {
-      pRing.IsActive = true;
-      pText.Text = "Checking if all files are present";
-      if (!await Common.SoundFilesPresent()) {
-        pText.Text = "Extracting files";
-        await Common.ExtractSounds();
+      if (Settings.CheckFiles == true) {
+        pRing.IsActive = true;
+        pText.Text = "Checking if all files are present";
+        if (!await Common.SoundFilesPresent()) {
+          pText.Text = "Extracting files";
+          await Common.ExtractSounds();
+        }
+        else
+          pText.Text = "All files present";
       }
-      else
-        pText.Text = "All files present";
 
       nGrid.Children.Add(nFrame);
       hGrid.Children.Add(hColor);

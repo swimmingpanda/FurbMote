@@ -21,7 +21,7 @@
 
     <StackPanel x:Name="pGrid" Grid.Row="1" VerticalAlignment="Center">
       <ProgressRing x:Name="pRing" HorizontalAlignment="Center" Background="Transparent" Foreground="White" IsActive="False"/>
-      <TextBlock x:Name="pText" Style="{ThemeResource BaseTextBlockStyle}" HorizontalAlignment="Center" TextWrapping="Wrap" Padding="24,6"/>
+      <TextBlock x:Name="pText" Style="{ThemeResource BaseTextBlockStyle}" HorizontalAlignment="Center" TextWrapping="Wrap" Padding="24,6" FontFamily="Assets/OpenSans-Regular.ttf#Open Sans"/>
     </StackPanel>
   </Grid>
 </Page>

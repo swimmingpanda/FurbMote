@@ -10,6 +10,6 @@
     d:DesignWidth="400">
     
     <Grid>
-    <TextBlock x:Name="text" FontSize="36" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Light" Padding="6"/>
+    <TextBlock x:Name="text" FontSize="36" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Light" Padding="6" FontFamily="ms-appx:/Assets/OpenSans-Light.ttf#Open Sans"/>
   </Grid>
 </UserControl>

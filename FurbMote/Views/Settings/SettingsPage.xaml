@@ -19,7 +19,7 @@
 
     <Grid Background="#33ffffff">
       <StackPanel Margin="15,0">
-        <CheckBox Content="Enable advanced commands" Checked="ShowAdvanced_Checked" Unchecked="ShowAdvanced_Checked" x:Name="ShowAdvBtn"/>
+        <CheckBox Content="Enable advanced commands" Checked="ShowAdvanced_Checked" Unchecked="ShowAdvanced_Checked" x:Name="ShowAdvBtn" FontFamily="ms-appx:/Assets/OpenSans-Regular.ttf#Open Sans"/>
       </StackPanel>
     </Grid>
   </Grid>

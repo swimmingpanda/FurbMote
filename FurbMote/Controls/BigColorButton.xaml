@@ -10,6 +10,6 @@
     d:DesignWidth="400">
 
   <Grid x:Name="grid" PointerEntered="grid_PointerEntered" PointerExited="grid_PointerExited">
-    <TextBlock x:Name="text" FontSize="38" FontWeight="Light" Foreground="White" VerticalAlignment="Center" Padding="0" HorizontalAlignment="Center"/>
+    <TextBlock x:Name="text" FontSize="38" Foreground="White" VerticalAlignment="Center" Padding="0" HorizontalAlignment="Center" FontWeight="Light" FontFamily="ms-appx:/Assets/OpenSans-Light.ttf#Open Sans" />
   </Grid>
 </UserControl>

@@ -28,7 +28,7 @@
         <RowDefinition Height="Auto"/>
         <RowDefinition Height="*"/>
       </Grid.RowDefinitions>
-      <AutoSuggestBox x:Name="suggestBox" AutoMaximizeSuggestionArea="True" PlaceholderText="Command name or ID" TextChanged="suggestBox_TextChanged" ItemsSource="{Binding}" Style="{StaticResource CustomSuggestBoxStyle}" >
+      <AutoSuggestBox x:Name="suggestBox" AutoMaximizeSuggestionArea="True" PlaceholderText="Command name or ID" TextChanged="suggestBox_TextChanged" ItemsSource="{Binding}" Style="{StaticResource CustomSuggestBoxStyle}" FontFamily="ms-appx:/Assets/OpenSans-Regular.ttf#Open Sans" >
         <AutoSuggestBox.ItemTemplate>
           <DataTemplate>
             <TextBlock Text="{Binding Entry}"/>
@@ -38,7 +38,7 @@
       <ListView x:Name="commandListView" Grid.Row="1" ItemsSource="{Binding}" ItemClick="commandListView_ItemClick" IsItemClickEnabled="True">
         <ListView.ItemTemplate>
           <DataTemplate>
-            <TextBlock Text="{Binding Entry}" Style="{ThemeResource BaseTextBlockStyle}" Padding="6,3,3,3"/>
+            <TextBlock Text="{Binding Entry}" Style="{ThemeResource BaseTextBlockStyle}" Padding="6,3,3,3" FontFamily="ms-appx:/Assets/OpenSans-Regular.ttf#Open Sans"/>
           </DataTemplate>
         </ListView.ItemTemplate>
       </ListView>

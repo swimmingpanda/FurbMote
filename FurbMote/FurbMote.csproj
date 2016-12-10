@@ -178,6 +178,10 @@
   <ItemGroup>
     <Content Include="Assets\Sound.zip" />
     <Content Include="Assets\CommandList.csv" />
+    <Content Include="Assets\OpenSans-Light.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\OpenSans-Regular.ttf" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

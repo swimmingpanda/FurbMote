@@ -13,9 +13,14 @@ namespace FurbMote {
       set { localSettings.Values["ShowAdvanced"] = value; }
     }
 
-    public static bool? CheckFiles {	
-      get { return (bool?)localSettings.Values["CheckFiles"]; }	
+    public static bool? CheckFiles {
+      get { return (bool?)localSettings.Values["CheckFiles"]; }
       set { localSettings.Values["CheckFiles"] = value; }
+    }
+
+    public static bool? AgreedLicense {
+      get { return (bool?)localSettings.Values["AgreedLicense"]; }
+      set { localSettings.Values["AgreedLicense"] = value; }
     }
   }
 }

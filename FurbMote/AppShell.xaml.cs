@@ -67,10 +67,14 @@ namespace FurbMote {
       nGrid.Children.Add(nFrame);
       hGrid.Children.Add(hColor);
       hColor.Children.Add(header);
-      NavFrameHome();
 
       pRing.IsActive = false;
       pText.Visibility = Visibility.Collapsed;
+
+      if (Settings.AgreedLicense != true)
+        NavFrameNavigate(typeof(Views.AgreementPage), Windows.UI.Color.FromArgb(0, 0x00, 0xAB, 0xA9), "Furbmote");
+      else
+        NavFrameHome();
     }
 
     public static void NavFrameNavigate(Type page, Windows.UI.Color color, string title) {

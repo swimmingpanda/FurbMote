@@ -43,7 +43,7 @@ namespace FurbMote.Views.Settings {
     }
 
     private void LicensesBtn_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e) {
-      this.Frame.Navigate(typeof(Settings.LicensesPage));
+      AppShell.NavFrameNavigate(typeof(LicensesPage), Windows.UI.Color.FromArgb(0xFF, 0xFA, 0x68, 0x00), "Licenses");
     }
   }
 }

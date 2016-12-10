@@ -45,6 +45,8 @@ namespace FurbMote.Controls {
         else if (Application.Current.RequestedTheme == ApplicationTheme.Light)
           grid.Background = new SolidColorBrush(Common.ShiftColor(BgColor.Color, 25, true));
       }
+      else
+        grid.Background = new SolidColorBrush(BgColorHover.Color);
     }
 
     private void grid_PointerExited(object sender, PointerRoutedEventArgs e) {

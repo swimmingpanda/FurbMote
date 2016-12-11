@@ -44,16 +44,5 @@
   </Applications>
   <Capabilities>
     <Capability Name="internetClientServer" />
-    <Capability Name="musicLibrary" />
-    <Capability Name="picturesLibrary" />
-    <Capability Name="removableStorage" />
-    <Capability Name="videosLibrary" />
-    <m3:Capability Name="appointments" />
-    <m3:Capability Name="contacts" />
-    <Capability Name="enterpriseAuthentication" />
-    <Capability Name="sharedUserCertificates" />
-    <DeviceCapability Name="microphone" />
-    <DeviceCapability Name="proximity" />
-    <DeviceCapability Name="webcam" />
   </Capabilities>
 </Package>

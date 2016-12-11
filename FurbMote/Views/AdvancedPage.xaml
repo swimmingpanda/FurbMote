@@ -28,7 +28,7 @@
         <RowDefinition Height="Auto"/>
         <RowDefinition Height="*"/>
       </Grid.RowDefinitions>
-      <AutoSuggestBox x:Name="suggestBox" AutoMaximizeSuggestionArea="True" PlaceholderText="Command name or ID" TextChanged="suggestBox_TextChanged" ItemsSource="{Binding}" Style="{StaticResource CustomSuggestBoxStyle}" FontFamily="ms-appx:/Assets/OpenSans-Regular.ttf#Open Sans" >
+      <AutoSuggestBox x:Name="suggestBox" AutoMaximizeSuggestionArea="True" PlaceholderText="Search" TextChanged="suggestBox_TextChanged" ItemsSource="{Binding}" Style="{StaticResource CustomSuggestBoxStyle}" FontFamily="ms-appx:/Assets/OpenSans-Regular.ttf#Open Sans">
         <AutoSuggestBox.ItemTemplate>
           <DataTemplate>
             <TextBlock Text="{Binding Entry}"/>

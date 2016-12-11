@@ -34,7 +34,7 @@
                   <VisualState x:Name="Portrait"/>
                 </VisualStateGroup>
               </VisualStateManager.VisualStateGroups>
-              <TextBox x:Name="TextBox" ScrollViewer.BringIntoViewOnFocusChange="False" Opacity="0.33" Background="White" BorderThickness="0" Padding="9" Header="{Binding Header, RelativeSource={RelativeSource Mode=TemplatedParent}}" Margin="0" PlaceholderText="{Binding PlaceholderText, RelativeSource={RelativeSource Mode=TemplatedParent}}" Width="{TemplateBinding Width}" Canvas.ZIndex="0"/>
+              <TextBox x:Name="TextBox" ScrollViewer.BringIntoViewOnFocusChange="False" Opacity="1" Background="#55ffffff" BorderThickness="0" Padding="9" Header="{Binding Header, RelativeSource={RelativeSource Mode=TemplatedParent}}" Margin="0" PlaceholderText="{Binding PlaceholderText, RelativeSource={RelativeSource Mode=TemplatedParent}}" Width="{TemplateBinding Width}" Canvas.ZIndex="0"/>
               <Popup x:Name="SuggestionsPopup">
                 <Border x:Name="SuggestionsContainer" BorderBrush="Transparent" BorderThickness="{ThemeResource TextControlBorderThemeThickness}" Background="{ThemeResource AutoSuggestBackgroundThemeBrush}">
                   <Border.RenderTransform>

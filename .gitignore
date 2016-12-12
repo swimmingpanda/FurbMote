@@ -5,6 +5,7 @@
 VisualAssets/
 VisualAssets/Layered/
 VisualAssets/zopfli/
+VisualAssets/screenshots/
 
 # User-specific files
 *.suo

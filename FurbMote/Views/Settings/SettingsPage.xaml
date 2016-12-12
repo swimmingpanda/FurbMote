@@ -30,6 +30,7 @@
             <LineBreak/><Underline><Hyperlink NavigateUri="https://github.com/adamhathcock/sharpcompress">SharpCompress</Hyperlink></Underline><Run FontSize="14" Text=" © 2014 Adam Hathcock" FontStyle="Italic"/>
             <LineBreak/><Underline><Hyperlink NavigateUri="https://github.com/JoshClose/CsvHelper">CsvHelper</Hyperlink></Underline><Run FontSize="14" Text=" © 2009-2015 Josh Close and Contributors" FontStyle="Italic"/>
             <LineBreak/><Underline><Hyperlink NavigateUri="https://fonts.google.com/specimen/Open+Sans">Open Sans</Hyperlink></Underline><Run FontSize="14" Text=" © 2010-2011 Google Corporation" FontStyle="Italic"/>
+            <LineBreak/><Underline><Hyperlink NavigateUri="http://www.kameleon.pics/">Furby Icon</Hyperlink></Underline><Run FontSize="14" Text=" Original version by Kameleon" FontStyle="Italic"/>
           </TextBlock>
           <controls:ListButton x:Name="LicensesBtn" Tapped="LicensesBtn_Tapped" Title="Licenses" BackColor="#55ffffff" BackColorHover="#33ffffff" UseThemeForHoverColor="False" HorizontalAlignment="Right" Margin="190,4,0,0"/>
         </StackPanel>

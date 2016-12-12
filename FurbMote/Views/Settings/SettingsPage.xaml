@@ -18,24 +18,31 @@
   <Grid Background="#FA6800">
 
     <Grid Background="#33ffffff">
-      <StackPanel Margin="15,0,15,0">
-        <CheckBox Content="Enable advanced commands" Checked="ShowAdvanced_Checked" Unchecked="ShowAdvanced_Checked" x:Name="ShowAdvBtn" FontFamily="ms-appx:/Assets/OpenSans-Regular.ttf#Open Sans" Style="{StaticResource CustomCheckBoxStyle}"/>
-        <CheckBox Content="Check if all files are present on startup" Checked="CheckFiles_Checked" Unchecked="CheckFiles_Checked" x:Name="CheckFilesBtn" FontFamily="ms-appx:/Assets/OpenSans-Regular.ttf#Open Sans" Style="{StaticResource CustomCheckBoxStyle}"/>
-        <StackPanel>
-          <TextBlock Text="About" FontSize="26" FontFamily="ms-appx:/Assets/OpenSans-Light.ttf#Open Sans" Padding="0,0,0,6"/>
-          <TextBlock FontFamily="ms-appx:/Assets/OpenSans-Regular.ttf#Open Sans" FontSize="16" TextWrapping="Wrap">
-            TODO: Link Github
-            <LineBreak/>Thanks to following third-party libraries, software and assets:
+      <ScrollViewer>
+        <StackPanel Margin="15,0,15,0">
+          <CheckBox Content="Enable advanced commands" Checked="ShowAdvanced_Checked" Unchecked="ShowAdvanced_Checked" x:Name="ShowAdvBtn" FontFamily="ms-appx:/Assets/OpenSans-Regular.ttf#Open Sans" Style="{StaticResource CustomCheckBoxStyle}"/>
+          <CheckBox Content="Check if all files are present on startup" Checked="CheckFiles_Checked" Unchecked="CheckFiles_Checked" x:Name="CheckFilesBtn" FontFamily="ms-appx:/Assets/OpenSans-Regular.ttf#Open Sans" Style="{StaticResource CustomCheckBoxStyle}"/>
+          <StackPanel>
+            <TextBlock Text="About" FontSize="26" FontFamily="ms-appx:/Assets/OpenSans-Light.ttf#Open Sans" Padding="0,0,0,6"/>
+            <TextBlock FontFamily="ms-appx:/Assets/OpenSans-Regular.ttf#Open Sans" FontSize="16" TextWrapping="Wrap">
+            <Underline><Hyperlink NavigateUri="https://github.com/swimmingpanda/FurbMote">Source code</Hyperlink></Underline><Run FontSize="14" Text=" This app is free and open source, made available under the MIT license." FontStyle="Italic"/>
+             <LineBreak/><LineBreak/>"Furby" is a trademark of Hasbro, Inc.
+            <LineBreak/><LineBreak/>Thanks to following third-party libraries, software and assets:
             <LineBreak/><Underline><Hyperlink NavigateUri="https://github.com/iafan/Hacksby">Hacksby</Hyperlink></Underline><Run FontSize="14" Text=" © 2013 Igor Afanasyev" FontStyle="Italic"/>
             <LineBreak/><Underline><Hyperlink NavigateUri="https://github.com/adamhathcock/sharpcompress">SharpCompress</Hyperlink></Underline><Run FontSize="14" Text=" © 2014 Adam Hathcock" FontStyle="Italic"/>
             <LineBreak/><Underline><Hyperlink NavigateUri="https://github.com/JoshClose/CsvHelper">CsvHelper</Hyperlink></Underline><Run FontSize="14" Text=" © 2009-2015 Josh Close and Contributors" FontStyle="Italic"/>
             <LineBreak/><Underline><Hyperlink NavigateUri="https://fonts.google.com/specimen/Open+Sans">Open Sans</Hyperlink></Underline><Run FontSize="14" Text=" © 2010-2011 Google Corporation" FontStyle="Italic"/>
             <LineBreak/><Underline><Hyperlink NavigateUri="http://www.kameleon.pics/">Furby Icon</Hyperlink></Underline><Run FontSize="14" Text=" Original version by Kameleon" FontStyle="Italic"/>
-          </TextBlock>
-          <controls:ListButton x:Name="LicensesBtn" Tapped="LicensesBtn_Tapped" Title="Licenses" BackColor="#55ffffff" BackColorHover="#33ffffff" UseThemeForHoverColor="False" HorizontalAlignment="Right" Margin="190,4,0,0"/>
+            </TextBlock>
+            <controls:ListButton x:Name="LicensesBtn" Tapped="LicensesBtn_Tapped" Title="Licenses" BackColor="#55ffffff" BackColorHover="#33ffffff" UseThemeForHoverColor="False" HorizontalAlignment="Right" Margin="190,4,-6,0"/>
+            <TextBlock Text="Help" FontSize="26" FontFamily="ms-appx:/Assets/OpenSans-Light.ttf#Open Sans" Padding="0,0,0,6"/>
+            <TextBlock FontFamily="ms-appx:/Assets/OpenSans-Regular.ttf#Open Sans" FontSize="16" TextWrapping="Wrap" Padding="0,0,0,6">
+              This app is designed for the 2012 Furby model, but is not guaranteed to work on any version of the Furby. The app talks to the furby using high-pitched sounds, so make sure to set the volume of your device high enough so the Furby can hear it. <LineBreak/>If you turn it too high, it will make weird sounds you will be able to hear, but your furby might not.
+            </TextBlock>
+          </StackPanel>
         </StackPanel>
-      </StackPanel>
-      
+      </ScrollViewer>
+
     </Grid>
   </Grid>
 </Page>
